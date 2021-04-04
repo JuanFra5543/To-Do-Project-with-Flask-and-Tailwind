@@ -1,0 +1,48 @@
+{%extends "base.html"%}
+
+{% block content %}
+    <!--Uses 'sm', 'md', 'lg', 'xl', '2x1' when we want to add responsive design to the page
+            Example: here we use lg that is equivalent to have a css file that conteins @media (min-width: 1024px){}-->
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <div class="mb-4">
+            <h1 class="text-gray-darkest"> To-Do list </h1>
+            <div class="flex mt-4">
+                
+                {% include "partials/_form.html" %}
+
+            </div>
+        </div>
+        <div>
+            {% if tasks %}
+                {% for task in tasks %}
+                    <div class="flex mb-4 items-center">
+
+                        <p class="w-full text-gray-darkest">
+                            {{ task.name_task}}
+                        </p>
+                        
+                        <a
+                            class="flex-no-shrink p-2 ml-2 border-2 rounded text-green border-green no-underline hover:text-white hover:bg-green bg-green-400"
+                            href="/update/{{ task.id_task }}"
+                        >
+                            Update
+                        </a>
+
+                        <a
+                            class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red no-underline hover:text-white hover:bg-red bg-red-600"
+                            href="/delete/{{ task.id_task }}"
+                        >
+                            Remove
+                        </a>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">
+                    No existing tasks
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock content %}

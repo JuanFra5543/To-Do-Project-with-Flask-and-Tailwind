@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>
+        {% if tittle %}
+        {{ tittle }}
+        {% else %} To-Do Proyect with Flask adn Tailwind
+        {% endif %}
+    </title>
+</head>
+<body>
+    <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+
+        {% block content %}
+
+        {% endblock content %}
+
+    </div>
+</body>
+</html>
